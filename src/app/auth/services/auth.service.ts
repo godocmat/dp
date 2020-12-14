@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {Observable, of} from 'rxjs';
@@ -6,6 +6,8 @@ import {User} from '../models/user';
 import {switchMap} from 'rxjs/operators';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {ToastrService} from 'ngx-toastr';
+import {DialogService} from 'primeng/dynamicdialog';
+import {ResetPasswordDialogComponent} from '../components/reset-password-dialog/reset-password-dialog.component';
 
 
 @Injectable({
@@ -18,6 +20,7 @@ export class AuthService {
   constructor(public  afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private toastrService: ToastrService,
+              @Inject(DialogService) private dialogService: DialogService,
               public  router: Router) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
@@ -39,6 +42,9 @@ export class AuthService {
       const data = {
         uid: user.uid,
         email: user.email,
+        roles: {
+          client: true
+        }
       } as User;
       return userRef.set(data, {merge: true});
     });
@@ -54,8 +60,9 @@ export class AuthService {
         }
         else {
           this.router.navigate(['/']);
+          this.toastrService.success('Boli ste úspešne prihlásený');
         }
-      });
+      }).catch(err => this.toastrService.error(err));
     }
     catch (err) {
       console.error(err);
@@ -68,33 +75,42 @@ export class AuthService {
     try {
       await this.afAuth.createUserWithEmailAndPassword(email, password).then((user) => {
         this.createUser(user.user);
-        user.user.sendEmailVerification().then(res => {
+        user.user.sendEmailVerification().then(() => {
+          this.toastrService.success('Na vašu emailovú adresu bol odoslaný overovací email');
           this.afAuth.signOut();
         });
-      }).catch(err => console.error(err));
+      }).catch(err => {
+        this.toastrService.error(err);
+        console.error(err);
+      });
     } catch (err) {
       console.error(err);
       this.toastrService.error(err);
     }
   }
 
-  async resetPassword(email): Promise<void> {
+  async resetPassword(): Promise<void> {
+    const ref = this.dialogService.open(ResetPasswordDialogComponent, {
+      header: 'Zabduli ste heslo ? Vložte svoj email',
+      width: 'auto',
+      styleClass: ''
+    });
+
+    ref.onClose.subscribe((email) => {
       if (email) {
         this.afAuth.sendPasswordResetEmail(email)
-          .then(res => {
-            // reset pass sent
-            this.toastrService.success('Resetovací email bol odoslaný');
+          .then(() => {
+            this.toastrService.success('Email pre zmenu hesla bol odoslaný');
           })
-          .catch(err => {
-            console.error(err);
-            this.toastrService.error(err);
-          });
+          .catch(err => this.toastrService.error(err));
       }
+    });
   }
 
 
   async signOut(): Promise<void> {
     await this.afAuth.signOut();
-    await this.router.navigate(['/']);
+    this.toastrService.success('Boli ste úspešne odhlásený');
+    await this.router.navigate(['/auth/login']);
   }
 }

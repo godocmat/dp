@@ -1,15 +1,26 @@
 <div class="login-container  p-5" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
 
   <h5>Prihlásenie</h5>
-  <span class="p-float-label">
-    <input id="username" type="email" pInputText [(ngModel)]="email">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutGap="30px">
+    <span class="p-float-label">
+    <input id="username" type="email" pInputText formControlName="email" >
     <label for="username">Email</label>
   </span>
 
-  <span class="p-float-label">
-    <input id="pass" type="password" pInputText [(ngModel)]="password">
+    <span class="p-float-label">
+    <input id="pass" type="password" pInputText formControlName="password">
     <label for="pass">Heslo</label>
   </span>
 
-  <button pButton label="Prihlásiť" (click)="login()"></button>
+    <button pButton label="Prihlásiť" type="submit" ></button>
+  </form>
+
+
+  <span class="clickable" (click)="resetPassword()">
+    Zabudli ste heslo?
+  </span>
+
+  <span class="clickable" routerLink="/auth/register" >
+    Nemáte ešte účet? Registrujte sa tu
+  </span>
 </div>
