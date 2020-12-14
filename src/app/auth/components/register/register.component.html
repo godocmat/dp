@@ -1,0 +1,21 @@
+<div class="register-container  p-5" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+
+  <h5>Registrácia</h5>
+  <span class="p-float-label">
+    <input id="username" type="email" pInputText [(ngModel)]="email">
+    <label for="username">Email</label>
+  </span>
+
+  <span class="p-float-label">
+    <input id="pass" type="password" pInputText [(ngModel)]="password">
+    <label for="pass">Heslo</label>
+  </span>
+
+  <span class="p-float-label">
+    <input id="repass" type="password" pInputText [(ngModel)]="repassword">
+    <label for="repass">Zopakovať heslo</label>
+  </span>
+
+
+  <button pButton label="Registrovať" (click)="register()"></button>
+</div>

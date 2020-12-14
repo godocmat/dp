@@ -1,0 +1,15 @@
+<div class="login-container  p-5" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+
+  <h5>Prihlásenie</h5>
+  <span class="p-float-label">
+    <input id="username" type="email" pInputText [(ngModel)]="email">
+    <label for="username">Email</label>
+  </span>
+
+  <span class="p-float-label">
+    <input id="pass" type="password" pInputText [(ngModel)]="password">
+    <label for="pass">Heslo</label>
+  </span>
+
+  <button pButton label="Prihlásiť" (click)="login()"></button>
+</div>
