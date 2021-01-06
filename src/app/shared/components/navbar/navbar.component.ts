@@ -29,7 +29,32 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getMenuItems(user): any[] {
-    if (user) {
+    if (user?.roles?.admin) {
+      return this.items = [
+        {
+          label: 'ŠDJ9',
+        },
+        {
+          label: 'Telocvične',
+        },
+        {
+          label: 'Práčky',
+        },
+        {
+          label: 'Izby'
+        },
+        {
+          label: 'Admin'
+        },
+        {
+          label: 'Odhlásiť sa',
+          command: () => {
+            this.authService.signOut().then();
+          }
+        }
+      ];
+    }
+    else if (user?.roles?.client) {
       return this.items = [
         {
           label: 'ŠDJ9',

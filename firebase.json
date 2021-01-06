@@ -11,6 +11,7 @@
   },
   "hosting": [
     {
+      "target": "diplomovka",
       "public": "dist/diplomovka",
       "ignore": [
         "firebase.json",
