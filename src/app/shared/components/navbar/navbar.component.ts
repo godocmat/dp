@@ -36,6 +36,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
         },
         {
           label: 'Telocvične',
+          command: () => {
+            this.router.navigate((['gym']));
+          }
         },
         {
           label: 'Práčky',
@@ -61,6 +64,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
         },
         {
           label: 'Telocvične',
+          command: () => {
+            this.router.navigate((['gym']));
+          }
         },
         {
           label: 'Práčky',
