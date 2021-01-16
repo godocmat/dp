@@ -33,6 +33,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       return this.items = [
         {
           label: 'ŠDJ9',
+          command: () => {
+            this.router.navigate(['/']);
+          }
         },
         {
           label: 'Telocvične',
@@ -41,13 +44,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
           }
         },
         {
-          label: 'Práčky',
-        },
-        {
-          label: 'Izby'
-        },
-        {
-          label: 'Admin'
+          label: 'Moje Telocvične',
+          command: () => {
+            this.router.navigate((['gym/my_reservations']));
+          }
         },
         {
           label: 'Odhlásiť sa',
@@ -61,6 +61,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       return this.items = [
         {
           label: 'ŠDJ9',
+          command: () => {
+            this.router.navigate(['/']);
+          }
         },
         {
           label: 'Telocvične',
@@ -69,10 +72,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
           }
         },
         {
-          label: 'Práčky',
-        },
-        {
-          label: 'Izby'
+          label: 'Moje Telocvične',
+          command: () => {
+            this.router.navigate((['gym/my_reservations']));
+          }
         },
         {
           label: 'Odhlásiť sa',

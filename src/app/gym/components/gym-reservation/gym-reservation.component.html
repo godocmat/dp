@@ -1,1 +1,6 @@
-<p>gym-reservation works!</p>
+<div class="gymReservation pt-2 pb-2" [ngClass]="reserved ? 'reservedGym' : 'clickable freeGym' " fxLayout="column" fxLayoutAlign="center center"
+(click)="!reserved && reserve()">
+  <span><b>{{gymReservation.timeFrom}}:00 - {{gymReservation.timeUntil}}:00</b></span>
+  <b>{{reserved ? 'Obsadené' : 'Voľné'}}</b>
+</div>
+<p-confirmDialog header="Potvrdenie" icon="pi pi-exclamation-triangle"></p-confirmDialog>

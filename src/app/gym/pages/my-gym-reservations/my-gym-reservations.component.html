@@ -1,0 +1,22 @@
+<main class="container">
+  <p-table [value]="reservations" sortField="date">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Dátum</th>
+        <th>Od</th>
+        <th>Do</th>
+        <th>Zmazať</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-reservation>
+      <tr>
+        <td>{{reservation.date * 1000 | date:'EEEE, d MMMM y'}}</td>
+        <td>{{reservation.timeFrom + ':00'}}</td>
+        <td>{{reservation.timeUntil + ':00'}}</td>
+        <td><p-button styleClass="p-button-danger" label="Zmazať rezerváciu" (onClick)="deleteReservation(reservation)"></p-button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</main>
+
+<p-confirmDialog header="Potvrdenie" icon="pi pi-exclamation-triangle"></p-confirmDialog>

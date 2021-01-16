@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {GymReservationComponent} from './components/gym-reservation/gym-reservation.component';
+import {GymReservationPageComponent} from './pages/gym-reservation-page/gym-reservation-page.component';
+import {MyGymReservationsComponent} from './pages/my-gym-reservations/my-gym-reservations.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: GymReservationComponent
+    component: GymReservationPageComponent
+  },
+  {
+    path: 'my_reservations',
+    component: MyGymReservationsComponent
   }
 ];
 
