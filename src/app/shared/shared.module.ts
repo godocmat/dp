@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {ButtonModule} from "primeng/button";
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -24,7 +25,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     ReactiveFormsModule,
     InputTextModule,
     SpinnerModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ButtonModule
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     MenubarModule,
     TooltipModule,
     InputTextModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ButtonModule
 
   ]
 })

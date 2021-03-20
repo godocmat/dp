@@ -26,7 +26,7 @@ import {DialogService} from 'primeng/dynamicdialog';
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    SharedModule
+    SharedModule,
   ],
   providers: [DialogService],
   bootstrap: [AppComponent]

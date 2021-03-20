@@ -1,5 +1,5 @@
 export class WashingMachine {
-  uid: number;
+  uid: string;
   userId: string;
   timeUntil: number;
   adminTimeUntil: number;
