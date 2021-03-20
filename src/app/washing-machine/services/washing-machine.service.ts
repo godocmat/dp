@@ -15,24 +15,17 @@ export class WashingMachineService {
   getFreeWashingMachines(): Observable<WashingMachine[]> {
     return this.firestore.collection('wm_reservations', ref => {
       return ref.where('adminTimeUntil', '<=', moment().unix());
-      // return ref
-      //   .where('date', '<', moment().day(13).unix())
-      //   .where('date', '>', moment().day(0).unix()).orderBy('date', 'asc');
-    })
-      .get()
-      .pipe(
-        map((requests) => {
-          return requests.docs.map((snap) => {
-            return {
-              uid: snap.id,
-              ...snap.data() as WashingMachine
-            };
-          });
-        })
-      );
+    }).snapshotChanges().pipe(map((req) => {
+      return req.map((r) => {
+        return {
+          uid: r.payload.doc.id,
+          ...r.payload.doc.data() as WashingMachine
+        };
+      });
+    }));
   }
 
-  reserveWashingMachine(washingMachine: WashingMachine): Promise<void> {
+  updateWashingMachine(washingMachine: WashingMachine): Promise<void> {
     return this.firestore.collection('wm_reservations').doc(washingMachine.uid).update(washingMachine);
   }
 
@@ -40,15 +33,26 @@ export class WashingMachineService {
     return this.firestore.collection('wm_reservations', ref => {
       return ref.where('userId', '==', userId)
         .where('adminTimeUntil', '>=', moment().unix());
-    }).get().pipe(
-      map((req) => {
-        return req.docs.map((snap) => {
-          return {
-            uid: snap.id,
-            ...snap.data() as WashingMachine
-          };
-        });
-      })
-    );
+    }).snapshotChanges().pipe(map((req) => {
+      return req.map((r) => {
+        return {
+          uid: r.payload.doc.id,
+          ...r.payload.doc.data() as WashingMachine
+        };
+      });
+    }));
+  }
+
+  getWashingMachinesForAdminConfirmation(): Observable<WashingMachine[]> {
+    return this.firestore.collection('wm_reservations', ref => {
+      return ref.where('adminTimeUntil', '>=', moment().unix());
+    }).snapshotChanges().pipe(map((req) => {
+      return req.map((r) => {
+        return {
+          uid: r.payload.doc.id,
+          ...r.payload.doc.data() as WashingMachine
+        };
+      });
+    }));
   }
 }

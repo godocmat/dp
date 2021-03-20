@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CountdownConfig} from "ngx-countdown";
 import {ToastrService} from "ngx-toastr";
 import {switchMap} from "rxjs/operators";
 import {User} from "src/app/auth/models/user";
@@ -17,6 +18,7 @@ export class WmReservationPageComponent implements OnInit {
   user: User;
   userWM: WashingMachine;
   isLoading = true;
+  countdownConfig: CountdownConfig;
 
   constructor(private wmService: WashingMachineService,
               private toastrService: ToastrService,
@@ -37,6 +39,9 @@ export class WmReservationPageComponent implements OnInit {
       if (wm.length > 0) {
         this.userWM = wm[0];
         console.log(this.userWM);
+        this.countdownConfig = {
+          leftTime: this.userWM.adminTimeUntil - moment().unix()
+        };
       }
       this.isLoading = false;
     });
@@ -47,7 +52,7 @@ export class WmReservationPageComponent implements OnInit {
        this.wms[0].timeUntil = moment().add('hours', 4).unix();
        this.wms[0].adminTimeUntil = moment().add('minutes', 20).unix();
        this.wms[0].userId = this.user.uid;
-       this.wmService.reserveWashingMachine(this.wms[0]).then(res => {
+       this.wmService.updateWashingMachine(this.wms[0]).then(res => {
          console.log(res);
          this.toastrService.success('Práčka úspešne rezervovaná');
        });
@@ -55,7 +60,7 @@ export class WmReservationPageComponent implements OnInit {
   }
 
   getTimeFromUnix(unix: any): string {
-    return moment(unix).format('HH:mm:ss');
+    return moment.unix(unix).format('HH:mm:ss');
   }
 
 

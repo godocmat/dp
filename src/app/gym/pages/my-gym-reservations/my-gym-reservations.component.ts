@@ -42,7 +42,8 @@ export class MyGymReservationsComponent implements OnInit, OnDestroy {
         reservation.status = 'free';
         reservation.user = '';
         this.gymService.updateReservation(reservation).then(res => {
-          this.reservations = this.reservations.filter(r => r.uid !== reservation.uid);
+          // TODO: otestovat ci sa data updatuju same
+         // this.reservations = this.reservations.filter(r => r.uid !== reservation.uid);
           this.toastrService.success('Rezervácia úspešne odstránená');
         }).catch(err => this.toastrService.error(err));
       }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import {CountdownModule} from "ngx-countdown";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -27,6 +28,7 @@ import {DialogService} from 'primeng/dynamicdialog';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     SharedModule,
+    CountdownModule
   ],
   providers: [DialogService],
   bootstrap: [AppComponent]

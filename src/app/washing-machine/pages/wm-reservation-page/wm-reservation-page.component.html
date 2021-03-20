@@ -5,16 +5,21 @@
       Máte zarezervovanu práčku číslo {{userWM.uid}}.
       <div *ngIf="userWM.adminTimeUntil !== userWM.timeUntil">
         Prosim vyzdvihnite kluce od pracovne do {{getTimeFromUnix(userWM.adminTimeUntil)}}
-        Zostava vam este sek
+        Zostava vam este <countdown [config]="countdownConfig"></countdown>
       </div>
       <div *ngIf="userWM.adminTimeUntil === userWM.timeUntil">
         Pracka je rezervovana do {{getTimeFromUnix(userWM.timeUntil)}}
-        Zostava vam este sek
+        Zostava vam este <countdown [config]="countdownConfig"></countdown>
       </div>
     </div>
 
     <div *ngIf="!userWM">
-      <p-button label="Rezervuj" (click)="reserve()"></p-button>
+      <div *ngIf="wms.length > 0">
+        <p-button label="Rezervuj" (click)="reserve()"></p-button>
+      </div>
+      <div *ngIf="wms.length === 0">
+        Lutujeme, momentalne nie su volne ziadne pracky
+      </div>
     </div>
   </div>
 </div>

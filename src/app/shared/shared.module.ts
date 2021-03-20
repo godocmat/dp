@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ButtonModule} from "primeng/button";
+import {TableModule} from "primeng/table";
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -12,6 +13,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SpinnerModule} from 'primeng/spinner';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {CountdownModule} from "ngx-countdown";
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     InputTextModule,
     SpinnerModule,
     ProgressSpinnerModule,
-    ButtonModule
+    ButtonModule,
+    CountdownModule,
+    TableModule
   ],
   imports: [
     CommonModule,
@@ -39,7 +43,9 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     TooltipModule,
     InputTextModule,
     ProgressSpinnerModule,
-    ButtonModule
+    ButtonModule,
+    CountdownModule,
+    TableModule
 
   ]
 })

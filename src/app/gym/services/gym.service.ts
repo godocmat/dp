@@ -16,33 +16,27 @@ export class GymService {
     return this.firestore.collection('gym_reservations', ref => {
       return ref.where('date', '<', moment().day(13).unix())
         .where('date', '>', moment().day(0).unix()).orderBy('date', 'asc');
-    }).get()
-      .pipe(
-        map((requests) => {
-          return requests.docs.map((snap) => {
-            return {
-              uid: snap.id,
-              ...snap.data() as Gym
-            } as Gym;
-          });
-        })
-      );
+    }).snapshotChanges().pipe(map((req) => {
+      return req.map((r) => {
+        return {
+          uid: r.payload.doc.id,
+          ...r.payload.doc.data() as Gym
+        };
+      });
+    }));
   }
 
   getUserReservations(user): Observable<Gym[]> {
     return this.firestore.collection('gym_reservations', ref => {
       return ref.where('user', '==', user);
-    }).get()
-      .pipe(
-        map((requests) => {
-          return requests.docs.map((snap) => {
-            return {
-              uid: snap.id,
-              ...snap.data() as Gym
-            } as Gym;
-          });
-        })
-      );
+    }).snapshotChanges().pipe(map((req) => {
+      return req.map((r) => {
+        return {
+          uid: r.payload.doc.id,
+          ...r.payload.doc.data() as Gym
+        };
+      });
+    }));
   }
 
   deleteReservation(reservation: Gym): Promise<void> {

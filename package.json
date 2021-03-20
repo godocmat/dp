@@ -27,7 +27,7 @@
     "bootstrap": "^4.5.0",
     "firebase": "^7.0 || ^8.0",
     "moment": "^2.29.1",
-    "ngx-countdown-timer": "^0.2.0",
+    "ngx-countdown": "^11.0.3",
     "ngx-toastr": "^13.2.0",
     "primeicons": "^4.1.0",
     "primeng": "^11.0.0",
