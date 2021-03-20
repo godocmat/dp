@@ -9,6 +9,7 @@ import {FlexModule} from '@angular/flex-layout';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { MyGymReservationsComponent } from './pages/my-gym-reservations/my-gym-reservations.component';
 import {TableModule} from 'primeng/table';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {TableModule} from 'primeng/table';
     AccordionModule,
     FlexModule,
     ConfirmDialogModule,
-    TableModule
+    TableModule,
+    SharedModule
   ]
 })
 export class GymModule { }

@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-
+  isLoading = true;
   items: MenuItem[];
   user: User;
   subs$: Subscription[] = [];
@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subs$.push(this.authService.user$.subscribe((user) => {
       this.user = user;
       this.getMenuItems(user);
+      this.isLoading = false;
     }));
 
   }
@@ -75,6 +76,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
           label: 'Moje Telocvične',
           command: () => {
             this.router.navigate((['gym/my_reservations']));
+          }
+        },
+        {
+          label: 'Práčky',
+          command: () => {
+            this.router.navigate(['washing-machine']);
           }
         },
         {

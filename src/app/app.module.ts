@@ -23,10 +23,10 @@ import {DialogService} from 'primeng/dynamicdialog';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    SharedModule,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SharedModule
   ],
   providers: [DialogService],
   bootstrap: [AppComponent]

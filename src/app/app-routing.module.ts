@@ -13,6 +13,9 @@ const routes: Routes = [
   ,
   {
     path: 'gym', loadChildren: () => import('./gym/gym.module').then(m => m.GymModule)
+  },
+  {
+    path: 'washing-machine', loadChildren: () => import('./washing-machine/washing-machine.module').then(m => m.WashingMachineModule)
   }
 ];
 

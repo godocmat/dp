@@ -1,8 +1,10 @@
-<nav class="nav sticky-top">
-  <p-menubar [model]="items" class="w-100">
-  </p-menubar>
-</nav>
+<p-progressSpinner fxLayout="row" fxLayoutAlign="center center" *ngIf="isLoading"></p-progressSpinner>
+<ng-container *ngIf="!isLoading">
+  <nav class="nav sticky-top">
+    <p-menubar [model]="items" class="w-100">
+    </p-menubar>
+  </nav>
 
+  <ng-content></ng-content>
+</ng-container>
 
-
-<ng-content></ng-content>

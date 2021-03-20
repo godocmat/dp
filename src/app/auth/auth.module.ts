@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ResetPasswordDialogComponent } from './components/reset-password-dialog/reset-password-dialog.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,12 +20,9 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    FormsModule,
-    InputTextModule,
-    FlexModule,
     ButtonModule,
     DynamicDialogModule,
-    ReactiveFormsModule
+    SharedModule
   ]
 })
 export class AuthModule { }

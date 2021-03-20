@@ -14,7 +14,8 @@ export class GymService {
 
   getReservationsForTwoWeeks(): Observable<Gym[]> {
     return this.firestore.collection('gym_reservations', ref => {
-      return ref.where('date', '<', moment().day(13).unix()).orderBy('date', 'asc');
+      return ref.where('date', '<', moment().day(13).unix())
+        .where('date', '>', moment().day(0).unix()).orderBy('date', 'asc');
     }).get()
       .pipe(
         map((requests) => {
