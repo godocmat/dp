@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AdminWmConfirmationComponent} from "src/app/washing-machine/components/admin-wm-confirmation/admin-wm-confirmation.component";
+import {WmAdminPageComponent} from 'src/app/washing-machine/pages/wm-admin-page/wm-admin-page.component';
 import {WmReservationPageComponent} from './pages/wm-reservation-page/wm-reservation-page.component';
 
 const routes: Routes = [
@@ -9,8 +9,8 @@ const routes: Routes = [
     component: WmReservationPageComponent
   },
   {
-    path: 'admin-confirmation',
-    component: AdminWmConfirmationComponent
+    path: 'admin',
+    component: WmAdminPageComponent
   }
 ];
 

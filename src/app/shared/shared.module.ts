@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ButtonModule} from "primeng/button";
-import {TableModule} from "primeng/table";
+import {ButtonModule} from 'primeng/button';
+import {CardModule} from 'primeng/card';
+import {TableModule} from 'primeng/table';
+import {TabViewModule} from 'primeng/tabview';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -13,7 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SpinnerModule} from 'primeng/spinner';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import {CountdownModule} from "ngx-countdown";
+import {CountdownModule} from 'ngx-countdown';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import {CountdownModule} from "ngx-countdown";
     ProgressSpinnerModule,
     ButtonModule,
     CountdownModule,
-    TableModule
+    TableModule,
+    CardModule,
+    TabViewModule
   ],
   imports: [
     CommonModule,
@@ -45,7 +49,9 @@ import {CountdownModule} from "ngx-countdown";
     ProgressSpinnerModule,
     ButtonModule,
     CountdownModule,
-    TableModule
+    TableModule,
+    CardModule,
+    TabViewModule
 
   ]
 })

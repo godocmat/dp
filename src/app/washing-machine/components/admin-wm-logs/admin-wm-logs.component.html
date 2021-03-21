@@ -2,23 +2,20 @@
   <p-table [loading]="isLoading" [value]="wms">
     <ng-template pTemplate="header">
       <tr>
+        <th style="width: 20%">LogID</th>
         <th style="width: 10%;">Cislo pracky</th>
         <th>User ID</th>
         <th style="width: 20%">Cas potvrdenia</th>
         <th style="width: 20%;">Cas rezervacie</th>
-        <th>Potvrdit rezervaciu</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-wm>
       <tr>
+        <td>{{wm.logId}}</td>
         <td>{{wm.uid}}</td>
         <td>{{wm.userId}}</td>
         <td>{{unixToDate(wm.adminTimeUntil)}}</td>
         <td>{{unixToDate(wm.timeUntil)}}</td>
-        <td>
-          <p-button *ngIf="wm.adminTimeUntil < wm.timeUntil" label="Potvrdit" (click)="updateReservation(wm, false)"></p-button>
-          <p-button *ngIf="wm.adminTimeUntil == wm.timeUntil" label="Odstranit" (click)="updateReservation(wm, true)" styleClass="p-button-danger"></p-button>
-        </td>
       </tr>
     </ng-template>
   </p-table>

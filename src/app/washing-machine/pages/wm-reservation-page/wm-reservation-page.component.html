@@ -2,24 +2,44 @@
   <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
   <div *ngIf="!isLoading" class="mt-5">
     <div *ngIf="userWM">
-      Máte zarezervovanu práčku číslo {{userWM.uid}}.
-      <div *ngIf="userWM.adminTimeUntil !== userWM.timeUntil">
-        Prosim vyzdvihnite kluce od pracovne do {{getTimeFromUnix(userWM.adminTimeUntil)}}
-        Zostava vam este <countdown [config]="countdownConfig"></countdown>
-      </div>
-      <div *ngIf="userWM.adminTimeUntil === userWM.timeUntil">
-        Pracka je rezervovana do {{getTimeFromUnix(userWM.timeUntil)}}
-        Zostava vam este <countdown [config]="countdownConfig"></countdown>
-      </div>
+      <p-card styleClass="rounded">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <span>Máte zarezervovanu práčku číslo {{userWM.uid}}.</span>
+          <div *ngIf="userWM.adminTimeUntil !== userWM.timeUntil" fxLayout="column" fxLayoutAlign="center center">
+            <span>
+              Prosim vyzdvihnite kluce od pracovne do {{getTimeFromUnix(userWM.adminTimeUntil)}}
+            </span>
+
+            <span>
+              Zostava vam este <countdown [config]="countdownConfig"></countdown>
+            </span>
+          </div>
+          <div *ngIf="userWM.adminTimeUntil === userWM.timeUntil" fxLayout="column" fxLayoutAlign="center center">
+            <span>
+              Pracka je rezervovana do {{getTimeFromUnix(userWM.timeUntil)}}
+            </span>
+            <span>
+              Zostava vam este <countdown [config]="countdownConfig"></countdown>
+            </span>
+          </div>
+        </div>
+      </p-card>
+
     </div>
 
     <div *ngIf="!userWM">
-      <div *ngIf="wms.length > 0">
-        <p-button label="Rezervuj" (click)="reserve()"></p-button>
-      </div>
-      <div *ngIf="wms.length === 0">
-        Lutujeme, momentalne nie su volne ziadne pracky
-      </div>
+      <p-card styleClass="rounded">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div *ngIf="wms.length > 0" fxLayout="column" fxLayoutAlign="center center">
+            <span class="p-3">Aktualne je volnych {{wms.length}} z 10 praciek</span>
+            <p-button label="Rezervuj" (click)="reserve()" class="pt-5 p-3"></p-button>
+          </div>
+          <div *ngIf="wms.length === 0" fxLayout="column" fxLayoutAlign="center center">
+            <span class="p-3">Lutujeme, momentalne nie su volne ziadne pracky</span>
+            <p-button label="Rezervuj" [disabled]="true" class="pt-5 p-3"></p-button>
+          </div>
+        </div>
+      </p-card>
     </div>
   </div>
 </div>

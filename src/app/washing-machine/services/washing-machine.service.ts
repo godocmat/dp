@@ -14,9 +14,21 @@ export class WashingMachineService {
 
   getFreeWashingMachines(): Observable<WashingMachine[]> {
     return this.firestore.collection('wm_reservations', ref => {
-      return ref.where('adminTimeUntil', '<=', moment().unix());
+      return ref.where('adminTimeUntil', '<=', moment().unix())
+        .where('status', '==', 'active');
     }).snapshotChanges().pipe(map((req) => {
       return req.map((r) => {
+        return {
+          uid: r.payload.doc.id,
+          ...r.payload.doc.data() as WashingMachine
+        };
+      });
+    }));
+  }
+
+  getAllWashingMachines(): Observable<WashingMachine[]> {
+    return this.firestore.collection('wm_reservations').snapshotChanges().pipe(map(req => {
+      return req.map(r => {
         return {
           uid: r.payload.doc.id,
           ...r.payload.doc.data() as WashingMachine
@@ -54,5 +66,23 @@ export class WashingMachineService {
         };
       });
     }));
+  }
+
+  getAdminRecords(limit: number): Observable<WashingMachine[]> {
+    return this.firestore.collection('wm_logs', ref => {
+      return ref.orderBy('adminTimeUntil', 'desc').limit(limit);
+    }).snapshotChanges()
+      .pipe(map((req) => {
+        return req.map((r) => {
+          return {
+            logId: r.payload.doc.id,
+            ...r.payload.doc.data() as WashingMachine
+          };
+        });
+      }));
+  }
+
+  addAdminRecord(record: WashingMachine): Promise<any> {
+    return this.firestore.collection('wm_logs').add(record);
   }
 }
