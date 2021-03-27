@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CountdownConfig} from 'ngx-countdown';
+import {AnimationOptions} from 'ngx-lottie';
 import {ToastrService} from 'ngx-toastr';
 import {Subscription} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
@@ -21,6 +22,9 @@ export class WmReservationPageComponent implements OnInit, OnDestroy {
   isLoading = true;
   countdownConfig: CountdownConfig;
   subs$: Subscription[] = [];
+  wmAnim: AnimationOptions = {
+    path: 'assets/lottie/wmAnim.json'
+  };
 
   constructor(private wmService: WashingMachineService,
               private toastrService: ToastrService,

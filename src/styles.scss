@@ -5,7 +5,7 @@
   src: url("assets/fonts/Poppins-Regular.ttf") format('truetype');
 }
 * {
-  font-family: 'Poppins', "Open Sans", Roboto, sans-serif !important;
+  font-family: 'Poppins', "Open Sans", Roboto, sans-serif;
 }
 body {
   font-size: 14px!important;
@@ -27,6 +27,14 @@ body {
 
 .card-green-shadow {
   box-shadow: 0 0 320px 30px #81C784;
+}
+
+.card-yellow-shadow {
+  box-shadow: 0 0 320px 30px #EAD62D;
+}
+
+.card-red-shadow {
+  box-shadow: 0 0 320px 30px #d26161;
 }
 
 .text-green-shadow {

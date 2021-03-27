@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {LottieModule} from "ngx-lottie";
 import {ButtonModule} from 'primeng/button';
 import {CardModule} from 'primeng/card';
 import {TableModule} from 'primeng/table';
@@ -34,7 +35,8 @@ import {CountdownModule} from 'ngx-countdown';
     CountdownModule,
     TableModule,
     CardModule,
-    TabViewModule
+    TabViewModule,
+    LottieModule
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import {CountdownModule} from 'ngx-countdown';
     CountdownModule,
     TableModule,
     CardModule,
-    TabViewModule
+    TabViewModule,
+    LottieModule
 
   ]
 })
