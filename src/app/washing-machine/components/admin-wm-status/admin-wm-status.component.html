@@ -2,7 +2,7 @@
   <p-table [loading]="isLoading" [value]="wms">
     <ng-template pTemplate="header">
       <tr>
-        <th>Cislo pracky</th>
+        <th>Číslo práčky</th>
         <th>Status</th>
         <th></th>
       </tr>
@@ -12,8 +12,8 @@
         <td>{{wm.uid}}</td>
         <td>{{wm.status}}</td>
         <td>
-          <p-button *ngIf="wm.status === 'active'" label="Vypnut" styleClass="p-button-danger" (click)="setStatus(wm, 'inactive')"></p-button>
-          <p-button *ngIf="wm.status === 'inactive'" label="Zapnut" (click)="setStatus(wm, 'active')"></p-button>
+          <p-button *ngIf="wm.status === 'active'" label="Vypnúť" styleClass="p-button-danger" (click)="setStatus(wm, 'inactive')"></p-button>
+          <p-button *ngIf="wm.status === 'inactive'" label="Zapnúť" (click)="setStatus(wm, 'active')"></p-button>
         </td>
       </tr>
     </ng-template>

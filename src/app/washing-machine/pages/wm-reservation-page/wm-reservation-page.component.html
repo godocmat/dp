@@ -1,7 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
   <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
   <div *ngIf="!isLoading" class="mt-5">
-    <div *ngIf="userWM" class="card-green-shadow">
+    <div *ngIf="userWM" class="card-green-shadow border-green">
       <p-card styleClass="rounded">
         <div fxLayout="row" fxLayoutAlign="center center" class="w-100" fxLayout.lt-md="column">
           <div fxLayout="column" fxLayoutAlign="center center" class="light-text-green-shadow ml-md-5 mt-3 mt-md-0">
@@ -32,15 +32,15 @@
 
     </div>
 
-    <div *ngIf="!userWM" class="card-green-shadow">
+    <div *ngIf="!userWM" class="card-green-shadow border-green">
       <p-card styleClass="roundedCard">
         <div fxLayout="column" fxLayoutAlign="center center">
           <div *ngIf="wms.length > 0" fxLayout="column" fxLayoutAlign="center center">
-            <span class="p-3">Aktualne je volnych {{wms.length}} z 10 praciek</span>
+            <span class="p-3">Aktuálne sú voľné: {{wms.length}} z 10 praciek</span>
             <button pButton label="Rezervuj" (click)="reserve()" class="mt-3 input-green-shadow button-dark-text-green-shadow"></button>
           </div>
           <div *ngIf="wms.length === 0" fxLayout="column" fxLayoutAlign="center center">
-            <span class="p-3">Lutujeme, momentalne nie su volne ziadne pracky</span>
+            <span class="p-3">Ľutujeme, momentálne nie sú voľné žiadne práčky</span>
             <button pButton label="Rezervuj" [disabled]="true" class="mt-3 input-green-shadow button-dark-text-green-shadow"></button>
           </div>
         </div>
