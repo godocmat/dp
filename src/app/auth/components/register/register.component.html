@@ -1,25 +1,35 @@
-<div class="register-container  p-5" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+<div class="register-container card-green-shadow  p-5" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
 
-  <h5>Registrácia</h5>
+  <h5 class="text-green-shadow">Registrácia</h5>
   <form (ngSubmit)="register()" [formGroup]="registerForm" fxLayout="column" fxLayoutGap="30px">
     <span class="p-float-label">
-    <input id="username" type="email" pInputText formControlName="email">
+    <input class="input-green-shadow" id="username" type="email" pInputText formControlName="email">
     <label for="username">Email</label>
   </span>
 
     <span class="p-float-label">
-    <input id="pass" type="password" pInputText formControlName="password">
+    <input class="input-green-shadow" id="pass" type="password" pInputText formControlName="password">
     <label for="pass">Heslo</label>
   </span>
 
     <span class="p-float-label">
-    <input id="repass" type="password" pInputText formControlName="repassword">
+    <input class="input-green-shadow" id="repass" type="password" pInputText formControlName="repassword">
     <label for="repass">Zopakovať heslo</label>
   </span>
-    <button type="submit" pButton label="Registrovať"></button>
+
+    <span class="p-float-label">
+    <input class="input-green-shadow" id="firstName" type="text" pInputText formControlName="firstName">
+    <label for="pass">Meno</label>
+  </span>
+
+    <span class="p-float-label">
+    <input class="input-green-shadow" id="lastName" type="text" pInputText formControlName="lastName">
+    <label for="pass">Priezvisko</label>
+  </span>
+    <button class="button-dark-text-green-shadow input-green-shadow" type="submit" pButton label="Registrovať"></button>
   </form>
 
-  <span class="clickable" routerLink="/auth/login">Máte už účet? Prihláste sa tu</span>
+  <span class="clickable text-center light-text-green-shadow" routerLink="/auth/login">Máte už účet? Prihláste sa tu</span>
 
 
 

@@ -33,7 +33,7 @@ export class AuthService {
     );
   }
 
-  async createUser(user): Promise<void> {
+  async createUser(user, userData): Promise<void> {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
     let currentUser: User;
 
@@ -44,7 +44,8 @@ export class AuthService {
         email: user.email,
         roles: {
           client: true
-        }
+        },
+        ...userData
       } as User;
       return userRef.set(data, {merge: true});
     });
@@ -71,10 +72,10 @@ export class AuthService {
 
   }
 
-  async registerUser(email, password): Promise<void> {
+  async registerUser(email, password, userData): Promise<void> {
     try {
       await this.afAuth.createUserWithEmailAndPassword(email, password).then((user) => {
-        this.createUser(user.user);
+        this.createUser(user.user, userData);
         user.user.sendEmailVerification().then(() => {
           this.toastrService.success('Na vašu emailovú adresu bol odoslaný overovací email');
           this.afAuth.signOut();
@@ -93,7 +94,7 @@ export class AuthService {
     const ref = this.dialogService.open(ResetPasswordDialogComponent, {
       header: 'Zabduli ste heslo ? Vložte svoj email',
       width: 'auto',
-      styleClass: ''
+      styleClass: 'light-text-green-shadow'
     });
 
     ref.onClose.subscribe((email) => {

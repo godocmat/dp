@@ -32,7 +32,9 @@ export class RegisterComponent implements OnInit {
       ]],
       repassword: ['', [
         Validators.required,
-      ]]
+      ]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]]
     }, {validators: this.pwdMatchValidator});
   }
 
@@ -43,7 +45,11 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     if (!this.registerForm.invalid) {
-      this.authService.registerUser(this.getFormValue('email'), this.getFormValue('password')).then(() => this.router.navigate(['/auth/login']));
+      const userData = {
+        firstName: this.getFormValue('firstName'),
+        lastName: this.getFormValue('lastName')
+      };
+      this.authService.registerUser(this.getFormValue('email'), this.getFormValue('password'), userData).then(() => this.router.navigate(['/auth/login']));
     }
     else {
       this.toastrService.error('Zle vyplnený formulár. Skontrolujte, či ste zadali všetky polia a či sa vaše heslá zhodujú');

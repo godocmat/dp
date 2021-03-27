@@ -27,8 +27,8 @@
 
     </div>
 
-    <div *ngIf="!userWM">
-      <p-card styleClass="rounded">
+    <div *ngIf="!userWM" class="card-green-shadow">
+      <p-card styleClass="roundedCard">
         <div fxLayout="column" fxLayoutAlign="center center">
           <div *ngIf="wms.length > 0" fxLayout="column" fxLayoutAlign="center center">
             <span class="p-3">Aktualne je volnych {{wms.length}} z 10 praciek</span>

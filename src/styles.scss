@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 @font-face {
   font-family: 'Poppins';
   src: url("assets/fonts/Poppins-Regular.ttf") format('truetype');
@@ -11,8 +12,9 @@ body {
   line-height: 25px!important;
   font-weight: normal!important;
   -webkit-font-smoothing: antialiased !important;
-  background-color: #f1f1f1 !important;
+  background-color: #141414 !important;
   min-height: 100vh;
+  color: white!important;
 }
 
 .clickable {
@@ -21,5 +23,24 @@ body {
 
 .p-5rem {
   padding: 5rem!important;
+}
+
+.card-green-shadow {
+  box-shadow: 0 0 320px 30px #81C784;
+}
+
+.text-green-shadow {
+  text-shadow: 0 0 9px #fff, 0 0 15px #81C784, 0 0 5px #fff;
+}
+.light-text-green-shadow {
+  text-shadow: 0 0 10px #fff;
+}
+
+.button-dark-text-green-shadow {
+  text-shadow: 0 0 9px #212529;
+}
+
+.input-green-shadow {
+  box-shadow: 0 0 15px 2px #81C784;
 }
 
