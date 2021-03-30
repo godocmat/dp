@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="mt-5 w-100" fxLayout="column" fxLayoutAlign="center center">
+    <span>Názov:</span>
+    <input class="w-100" pInputText [(ngModel)]="article.title">
+    <span class=" mt-5">Text:</span>
+    <p-editor class="w-100" [(ngModel)]="article.text" [style]="{'height':'320px'}"></p-editor>
+
+    <p-button (onClick)="nextPage()" label="Náhľad" class="mt-5"></p-button>
+  </div>
+</div>

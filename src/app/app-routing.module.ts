@@ -16,6 +16,12 @@ const routes: Routes = [
   },
   {
     path: 'washing-machine', loadChildren: () => import('./washing-machine/washing-machine.module').then(m => m.WashingMachineModule)
+  },
+  {
+    path: 'article', loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
+  },
+  {
+    path: 'rooms', loadChildren: () => import('./rooms/rooms.module').then(m => m.RoomsModule)
   }
 ];
 

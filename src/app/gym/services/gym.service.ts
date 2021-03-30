@@ -14,8 +14,8 @@ export class GymService {
 
   getReservationsForTwoWeeks(): Observable<Gym[]> {
     return this.firestore.collection('gym_reservations', ref => {
-      return ref.where('date', '<', moment().day(13).unix())
-        .where('date', '>', moment().day(0).unix()).orderBy('date', 'asc');
+      // ref.where('date', '<', moment().day(13).unix())
+      return ref.where('date', '>', moment().day(0).unix()).orderBy('date', 'asc').limit(24);
     }).snapshotChanges().pipe(map((req) => {
       return req.map((r) => {
         return {
@@ -28,7 +28,7 @@ export class GymService {
 
   getUserReservations(user): Observable<Gym[]> {
     return this.firestore.collection('gym_reservations', ref => {
-      return ref.where('user', '==', user);
+      return ref.where('user', '==', user).orderBy('date', 'asc');
     }).snapshotChanges().pipe(map((req) => {
       return req.map((r) => {
         return {
@@ -38,6 +38,10 @@ export class GymService {
       });
     }));
   }
+  //
+  // addReservation(reservation): Promise<any> {
+  //   return this.firestore.collection('gym_reservations').add(reservation);
+  // }
 
   deleteReservation(reservation: Gym): Promise<void> {
     return this.firestore.doc('gym_reservations/' + reservation.uid).set(reservation, {merge: true});

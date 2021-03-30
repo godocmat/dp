@@ -5,5 +5,8 @@ export class User {
     client: boolean;
     admin?: boolean;
   };
-
+  firstName: string;
+  lastName: string;
+  room: string;
+  payment: boolean
 }

@@ -1,0 +1,11 @@
+<div class="container mt-5">
+  <div class="w-100" fxLayout="column" fxLayoutAlign="center center">
+    <h3>{{article.title}}</h3>
+    <p class="mt-5" [innerHTML]="article.text"></p>
+    <div class="w-50" fxLayout="row" fxLayoutAlign="space-around center">
+      <p-button (onClick)="previousPage()" styleClass="p-button-danger" label="Naspäť" class="mt-5"></p-button>
+      <p-button (onClick)="submit()" label="Odoslať" class="mt-5"></p-button>
+    </div>
+
+  </div>
+</div>

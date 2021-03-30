@@ -4,6 +4,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {GymService} from '../../services/gym.service';
 import * as moment from 'moment';
 import {Subscription} from 'rxjs';
+import {log} from 'util';
 
 @Component({
   selector: 'app-gym-reservation-page',
@@ -34,6 +35,21 @@ export class GymReservationPageComponent implements OnInit, OnDestroy {
     this.secondSunday = moment().day(7).format('DD MMM YYYY');
     this.secondTuesday = moment().day(9).format('DD MMM YYYY');
     this.secondThursday = moment().day(11).format('DD MMM YYYY');
+
+    // for (let i = 19; i < 23; i++) {
+    //   let obj = {
+    //     date: moment().day(0).unix() + i,
+    //     gymNumber: 1,
+    //     status: 'free',
+    //     timeFrom: i,
+    //     timeUntil: i + 1
+    //   };
+    //   this.gymService.addReservation(obj).then(r => {
+    //     console.log('r', r);
+    //     console.log('pridana');
+    //     console.log(obj)
+    //   });
+    // }
   }
 
 

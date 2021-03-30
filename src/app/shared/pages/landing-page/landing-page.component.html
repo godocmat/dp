@@ -1,3 +1,21 @@
 <main class="container" fxLayout="row" fxLayoutAlign="center center">
-  <h1>ŠDJ9</h1>
+    <div class="mt-5">
+      <p-card>
+        <div class="light-text-green-shadow" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+          <h3 class="mt-3">{{user?.firstName}} {{user?.lastName}}</h3>
+
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="mr-5 ml-5">Izba: {{user?.room ? user?.room : '-'}}</span>
+            <span class="mr-5 ml-5" fxLayout="row" fxLayoutAlign="center center">Poplatok do OZ: <i [ngClass]="user?.payment ? 'pi-check' : 'pi-times'" class="ml-1 pi"></i> </span>
+            <span class="ml-5 mr-5" fxLayout="row" fxLayoutAlign="center center">Práčka: <span class="ml-1" *ngIf="userWM"> č. {{userWM.uid}}</span><i *ngIf="!userWM" class="ml-1 pi pi-times"></i> </span>
+          </div>
+          <div class="mb-3" fxLayout="column" fxLayoutAlign="center center">
+            <span fxLayout="row" fxLayoutAlign="center center">Telocvične: <i *ngIf="userGym.length == 0" class="ml-2 pi pi-times"></i></span>
+            <div *ngFor="let gym of userGym">
+              {{gym.date * 1000 | date:'EEEE, d MMMM y'}} - {{gym.timeFrom + ':00'}} - {{gym.timeUntil + ':00'}}
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
 </main>

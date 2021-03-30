@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (user?.roles?.admin) {
       return this.items = [
         {
-          label: 'ŠDJ9',
+          label: 'Dashboard',
           command: () => {
             this.router.navigate(['/']);
           }
@@ -61,7 +61,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     else if (user?.roles?.client) {
       return this.items = [
         {
-          label: 'ŠDJ9',
+          label: 'Dashboard',
           command: () => {
             this.router.navigate(['/']);
           }

@@ -1,0 +1,21 @@
+.block {
+  border-radius: 16px;
+  border: #ffffff 2px solid;
+  width: 100%;
+  position: relative;
+  background-color: #141414;
+}
+
+.block:before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  z-index: -1;
+  background-color: #ffffff;
+  background-size: 400%;
+  border-radius: 16px;
+  filter: blur(15px);
+}

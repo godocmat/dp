@@ -45,6 +45,8 @@ export class AuthService {
         roles: {
           client: true
         },
+        payment: false,
+        room: '',
         ...userData
       } as User;
       return userRef.set(data, {merge: true});
