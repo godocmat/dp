@@ -84,9 +84,9 @@ body {
   height: calc(100% + 10px);
   z-index: -1;
   // background-color: #2196f3;
-  background: linear-gradient(to right bottom, #ffdd22,  #FF3CAC, #2B86C5);
+  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
 
-  background-size: 200%;
+  background-size: 400%;
   //filter: blur(50px);
   animation: animateBgColor 20s linear infinite;
 }
@@ -100,8 +100,8 @@ body {
   height: calc(100% + 10px);
   z-index: -1;
   // background-color: #2196f3;
-  background: linear-gradient(to right bottom, #ffdd22,  #FF3CAC, #2B86C5);
-  //background-size: 300%;
+  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
+  background-size: 400%;
   filter: blur(30px);
   animation: animateBgColor 20s linear infinite;
 }
@@ -112,7 +112,7 @@ body {
     background-position: 0 0;
   }
   50% {
-    background-position: 200% 200%;
+    background-position: 300% 0;
   }
   100% {
     background-position: 0 0;

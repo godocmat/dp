@@ -7,11 +7,14 @@ import {AuthService} from "../../../auth/services/auth.service";
 import {User} from "../../../auth/models/user";
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {ConfirmDialog} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-room-reserve',
   templateUrl: './room-reserve.component.html',
-  styleUrls: ['./room-reserve.component.scss']
+  styleUrls: ['./room-reserve.component.scss'],
+  providers: [ConfirmationService]
 })
 export class RoomReserveComponent implements OnInit, OnDestroy {
   isLoading = true;
@@ -27,7 +30,8 @@ export class RoomReserveComponent implements OnInit, OnDestroy {
   constructor(private roomService: RoomService,
               private authService: AuthService,
               private router: Router,
-              private toastrService: ToastrService) { }
+              private toastrService: ToastrService,
+              private confirmDialog: ConfirmationService) { }
 
   ngOnInit(): void {
     this.sub = this.authService.user$.pipe(
@@ -48,51 +52,26 @@ export class RoomReserveComponent implements OnInit, OnDestroy {
         else {
           return of(null);
 
-      }}),
-      switchMap((roomObject: Room) => {
-        console.log(roomObject);
-        if (roomObject) {
-          this.roomObj = roomObject;
-          return zip(
-              this.authService.getUserById(roomObject.uidFirst),
-              this.authService.getUserById(roomObject.uidSecond),
-              this.authService.getUserById(roomObject.uidThird),
-              this.authService.getUserById(roomObject.uidFourth)
-          );
-        }
-        else {
-          return of(null);
-        }
-      })
-    ).subscribe((users) => {
-      console.log('sub', users);
-      if (users) {
-        this.user1 = users[0];
-        this.user2 = users[1];
-        this.user3 = users[2];
-        this.user4 = users[3];
+      }})).subscribe((roomObject: Room) => {
+      console.log(roomObject);
+      if (roomObject) {
+        this.roomObj = roomObject;
       }
       this.isLoading = false;
     });
   }
 
   reserve(): void {
-    if (!this.roomObj.uidFirst) {
-      this.roomObj.uidFirst = this.user.uid;
-      this.updateRoomAndUser();
-    }
-    else if (!this.roomObj.uidSecond) {
-      this.roomObj.uidSecond = this.user.uid;
-      this.updateRoomAndUser();
-    }
-    else if (!this.roomObj.uidThird) {
-      this.roomObj.uidThird = this.user.uid;
-      this.updateRoomAndUser();
-    }
-    else if (!this.roomObj.uidFourth) {
-      this.roomObj.uidFourth = this.user.uid;
-      this.updateRoomAndUser();
-    }
+    this.confirmDialog.confirm({
+      message: 'Naozaj chcete rezervovať izbu ' + this.room + ' ?',
+      accept: () => {
+        this.roomObj.users.push(this.user);
+        this.updateRoomAndUser();
+      },
+      reject: () => {
+        this.confirmDialog.close();
+      }
+    });
   }
 
   updateRoomAndUser(): void {

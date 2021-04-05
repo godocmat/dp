@@ -30,4 +30,8 @@ export class RoomService {
     return this.af.collection('rooms').doc(roomId).update(data);
   }
 
+  addRoom(roomId, data): Promise<any> {
+    return this.af.collection('rooms').doc(roomId).set(data);
+  }
+
 }

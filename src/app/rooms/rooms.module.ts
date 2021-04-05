@@ -9,6 +9,7 @@ import { RoomComponent } from './components/room/room.component';
 import {SharedModule} from '../shared/shared.module';
 import {BlockComponent} from './components/block/block.component';
 import { RoomReserveComponent } from './components/room-reserve/room-reserve.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RoomReserveComponent } from './components/room-reserve/room-reserve.com
     CommonModule,
     RoomsRoutingModule,
     StepsModule,
-    SharedModule
+    SharedModule,
+    ConfirmDialogModule
   ]
 })
 export class RoomsModule { }

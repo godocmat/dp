@@ -1,7 +1,6 @@
+import {User} from '../../auth/models/user';
+
 export interface Room {
-  uidFirst: string;
-  uidSecond: string;
-  uidThird: string;
-  uidFourth: string;
+  users: Array<User>;
   roomType: string;
 }
