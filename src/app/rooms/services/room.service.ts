@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from "rxjs/operators";
+import {Room} from "../models/room";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,18 @@ export class RoomService {
 
   constructor(private af: AngularFirestore) { }
 
-  next(value) {
+  next(value): void {
     this.room$.next(value);
   }
+
+  getRoomById(roomId: string): Observable<Room> {
+    return this.af.collection('rooms').doc(roomId).snapshotChanges().pipe(
+      map(r => {
+        return {
+          ...r.payload.data() as Room
+        };
+      })
+    );
+  }
+
 }

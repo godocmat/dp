@@ -10,13 +10,18 @@ import {Router} from '@angular/router';
 })
 export class FloorComponent implements OnInit, OnDestroy {
   room;
-  sub: Subscription
+  sub: Subscription;
 
   constructor(private roomService: RoomService,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.sub = this.roomService.room$.subscribe(room => this.room = room);
+    this.sub = this.roomService.room$.subscribe(room => {
+      this.room = room;
+      if (room.length === 0) {
+        this.router.navigate(['rooms/block']).then(r => this.roomService.next(''));
+      }
+    });
   }
 
   nextPage(value): void {

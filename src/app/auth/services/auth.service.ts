@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {Observable, of} from 'rxjs';
 import {User} from '../models/user';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {ToastrService} from 'ngx-toastr';
 import {DialogService} from 'primeng/dynamicdialog';
@@ -108,6 +108,23 @@ export class AuthService {
           .catch(err => this.toastrService.error(err));
       }
     });
+  }
+
+  getUserById(userId: string): Observable<User> {
+    if (userId) {
+      return this.afs.collection('users').doc(userId).snapshotChanges().pipe(
+        map(r => {
+          return {
+            uid: r.payload.id,
+            ...r.payload.data() as User
+          };
+        })
+      );
+    }
+    else {
+      return of(null);
+    }
+
   }
 
 

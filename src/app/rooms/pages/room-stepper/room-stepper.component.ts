@@ -24,6 +24,10 @@ export class RoomStepperComponent implements OnInit {
       {
         label: 'Izba',
         routerLink: 'room'
+      },
+      {
+        label: 'Rezervácia',
+        routerLink: 'room-reserve'
       }
     ];
   }

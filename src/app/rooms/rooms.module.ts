@@ -8,10 +8,11 @@ import { FloorComponent } from './components/floor/floor.component';
 import { RoomComponent } from './components/room/room.component';
 import {SharedModule} from '../shared/shared.module';
 import {BlockComponent} from './components/block/block.component';
+import { RoomReserveComponent } from './components/room-reserve/room-reserve.component';
 
 
 @NgModule({
-  declarations: [RoomStepperComponent, BlockComponent, FloorComponent, RoomComponent],
+  declarations: [RoomStepperComponent, BlockComponent, FloorComponent, RoomComponent, RoomReserveComponent],
   imports: [
     CommonModule,
     RoomsRoutingModule,

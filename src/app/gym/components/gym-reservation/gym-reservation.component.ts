@@ -19,6 +19,7 @@ export class GymReservationComponent implements OnInit, OnDestroy {
 
    @Input() gymReservation: Gym;
    reserved = false;
+   unavailable = false;
    user: User;
    subs$: Subscription[] = [];
 
@@ -30,6 +31,8 @@ export class GymReservationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.reserved = this.gymReservation.status !== 'free';
+    this.unavailable = this.gymReservation.date <= moment().unix().toString();
+    console.log(this.unavailable)
     this.subs$.push(this.authService.user$.subscribe(user => this.user = user));
   }
 

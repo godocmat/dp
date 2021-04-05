@@ -1,5 +1,7 @@
-<div class="gymReservation pt-2 pb-2" [ngClass]="reserved ? 'reservedGym' : 'clickable freeGym' " fxLayout="column" fxLayoutAlign="center center"
-(click)="!reserved && reserve()">
+<div class="gymReservation pt-2 pb-2"
+     [ngClass]="unavailable ? 'unavailableGym' : reserved ? 'reservedGym' : 'clickable freeGym'"
+     fxLayout="column" fxLayoutAlign="center center"
+(click)="(!reserved && !unavailable) && reserve()">
   <span><b>{{gymReservation.timeFrom}}:00 - {{gymReservation.timeUntil}}:00</b></span>
   <b>{{reserved ? 'Obsadené' : 'Voľné'}}</b>
 </div>

@@ -7,7 +7,7 @@
           <div fxLayout="row" fxLayoutAlign="space-between center">
             <span class="mr-5 ml-5">Izba: {{user?.room ? user?.room : '-'}}</span>
             <span class="mr-5 ml-5" fxLayout="row" fxLayoutAlign="center center">Poplatok do OZ: <i [ngClass]="user?.payment ? 'pi-check' : 'pi-times'" class="ml-1 pi"></i> </span>
-            <span class="ml-5 mr-5" fxLayout="row" fxLayoutAlign="center center">Práčka: <span class="ml-1" *ngIf="userWM"> č. {{userWM.uid}}</span><i *ngIf="!userWM" class="ml-1 pi pi-times"></i> </span>
+            <span class="ml-5 mr-5" fxLayout="row" fxLayoutAlign="center center">Práčka: <span class="ml-1" *ngIf="userWM"> č. {{userWM.uid}} {{userWM.adminTimeUntil}}</span><i *ngIf="!userWM" class="ml-1 pi pi-times"></i> </span>
           </div>
           <div class="mb-3" fxLayout="column" fxLayoutAlign="center center">
             <span fxLayout="row" fxLayoutAlign="center center">Telocvične: <i *ngIf="userGym.length == 0" class="ml-2 pi pi-times"></i></span>

@@ -85,6 +85,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
           }
         },
         {
+          label: 'Izby',
+          command: () => {
+            this.router.navigate(['rooms']);
+          }
+        },
+        {
           label: 'Odhlásiť sa',
           command: () => {
             this.authService.signOut().then();
