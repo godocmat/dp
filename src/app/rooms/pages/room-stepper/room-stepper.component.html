@@ -1,6 +1,27 @@
-<div>
+<div *ngIf="!room">
   <div class="container mt-5">
     <p-steps [model]="items"></p-steps>
   </div>
   <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="room">
+    <div class="container mt-5 light-text-green-shadow ">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div class="card-red-shadow border-red rounded">
+          <p-card>
+            <div class="p-3 pl-5 pr-5 ml-5 mr-5" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+              <h3>{{this.room}}</h3>
+              <h5 *ngIf="user1">{{user1.firstName}} {{user1.lastName}}</h5>
+              <h5 *ngIf="user2; else noUser">{{user2.firstName}} {{user2.lastName}}</h5>
+              <h5 *ngIf="user3; else noUser">{{user3.firstName}} {{user3.lastName}}</h5>
+              <h5 *ngIf="user4; else noUser">{{user4.firstName}} {{user4.lastName}}</h5>
+              <ng-template #noUser><h5>-</h5></ng-template>
+            </div>
+          </p-card>
+        </div>
+
+      </div>
+    </div>
+
 </div>

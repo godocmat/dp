@@ -8,5 +8,6 @@ export class User {
   firstName: string;
   lastName: string;
   room: string;
-  payment: boolean
+  payment: boolean;
+  sex: 'male' | 'female';
 }

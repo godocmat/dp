@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  sexOptions = [{label: 'Muž', value: 'male'}, {label: 'Žena', value: 'female'}];
 
   registerForm: FormGroup;
 
@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit {
         Validators.required,
       ]],
       firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]]
+      lastName: ['', [Validators.required]],
+      sex: ['', Validators.required]
     }, {validators: this.pwdMatchValidator});
   }
 
@@ -47,7 +48,8 @@ export class RegisterComponent implements OnInit {
     if (!this.registerForm.invalid) {
       const userData = {
         firstName: this.getFormValue('firstName'),
-        lastName: this.getFormValue('lastName')
+        lastName: this.getFormValue('lastName'),
+        sex: this.getFormValue('sex')
       };
       this.authService.registerUser(this.getFormValue('email'), this.getFormValue('password'), userData).then(() => this.router.navigate(['/auth/login']));
     }

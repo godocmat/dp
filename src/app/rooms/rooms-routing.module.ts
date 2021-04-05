@@ -4,7 +4,7 @@ import {RoomStepperComponent} from './pages/room-stepper/room-stepper.component'
 import {BlockComponent} from './components/block/block.component';
 import {FloorComponent} from './components/floor/floor.component';
 import {RoomComponent} from './components/room/room.component';
-import {RoomReserveComponent} from "./components/room-reserve/room-reserve.component";
+import {RoomReserveComponent} from './components/room-reserve/room-reserve.component';
 
 const routes: Routes = [
   {

@@ -26,4 +26,8 @@ export class RoomService {
     );
   }
 
+  updateRoomById(roomId: string, data): Promise<any> {
+    return this.af.collection('rooms').doc(roomId).update(data);
+  }
+
 }

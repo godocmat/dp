@@ -26,6 +26,11 @@
     <input class="input-green-shadow" id="lastName" type="text" pInputText formControlName="lastName">
     <label for="pass">Priezvisko</label>
   </span>
+
+    <span class="p-float-label w-100">
+      <p-dropdown styleClass="w-100 input-green-shadow" [options]="sexOptions" optionLabel="label" optionValue="value" id="sex" formControlName="sex"></p-dropdown>
+    <label for="pass">Pohlavie</label>
+  </span>
     <button class="button-dark-text-green-shadow input-green-shadow" type="submit" pButton label="Registrovať"></button>
   </form>
 

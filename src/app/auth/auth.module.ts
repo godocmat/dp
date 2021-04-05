@@ -13,16 +13,18 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { ResetPasswordDialogComponent } from './components/reset-password-dialog/reset-password-dialog.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {SharedModule} from '../shared/shared.module';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
   declarations: [LoginComponent, LoginPageComponent, RegisterComponent, RegisterPageComponent, ResetPasswordDialogComponent],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    ButtonModule,
-    DynamicDialogModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        ButtonModule,
+        DynamicDialogModule,
+        SharedModule,
+        DropdownModule
+    ]
 })
 export class AuthModule { }

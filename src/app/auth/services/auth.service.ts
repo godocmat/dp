@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {Observable, of} from 'rxjs';
 import {User} from '../models/user';
-import {map, switchMap} from 'rxjs/operators';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {ToastrService} from 'ngx-toastr';
 import {DialogService} from 'primeng/dynamicdialog';
@@ -46,7 +46,7 @@ export class AuthService {
           client: true
         },
         payment: false,
-        room: '',
+        room: null,
         ...userData
       } as User;
       return userRef.set(data, {merge: true});
@@ -111,20 +111,21 @@ export class AuthService {
   }
 
   getUserById(userId: string): Observable<User> {
-    if (userId) {
+    if (userId.length > 0) {
+      console.log(userId);
       return this.afs.collection('users').doc(userId).snapshotChanges().pipe(
-        map(r => {
-          return {
-            uid: r.payload.id,
-            ...r.payload.data() as User
-          };
-        })
+        map((r) => r.payload.data() as User),
+        tap(r => console.log(r))
       );
     }
     else {
       return of(null);
     }
 
+  }
+
+  updateUserById(userId: string, data): Promise<any> {
+    return this.afs.collection('users').doc(userId).update(data);
   }
 
 

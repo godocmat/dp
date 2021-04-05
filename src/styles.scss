@@ -34,7 +34,10 @@ body {
 }
 
 .card-red-shadow {
-  box-shadow: 0 0 320px 30px #d26161;
+  box-shadow: 0 0 320px 30px #f44336;
+}
+.border-red {
+  border: 5px solid #f44336;
 }
 
 .text-green-shadow {
@@ -52,10 +55,67 @@ body {
   box-shadow: 0 0 15px 2px #81C784;
 }
 
+.input-red-shadow {
+  box-shadow: 0 0 15px 2px #f44336;
+}
+
 .border-green {
   border: 5px solid #81C784;
 }
 
 .border-yellow {
   border: 5px solid #EAD62D;
+}
+
+
+.card-auto-shadow {
+  //border: #ffffff 2px solid;
+  width: 100%;
+  position: relative;
+  background-color: #141414;
+}
+
+.card-auto-shadow:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  z-index: -1;
+  // background-color: #2196f3;
+  background: linear-gradient(to right bottom, #ffdd22,  #FF3CAC, #2B86C5);
+
+  background-size: 200%;
+  //filter: blur(50px);
+  animation: animateBgColor 20s linear infinite;
+}
+
+.card-auto-shadow::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  z-index: -1;
+  // background-color: #2196f3;
+  background: linear-gradient(to right bottom, #ffdd22,  #FF3CAC, #2B86C5);
+  //background-size: 300%;
+  filter: blur(30px);
+  animation: animateBgColor 20s linear infinite;
+}
+
+@keyframes animateBgColor {
+  0% {
+  //  filter: hue-rotate(0deg);
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 200% 200%;
+  }
+  100% {
+    background-position: 0 0;
+    //filter: hue-rotate(360deg);
+  }
 }
