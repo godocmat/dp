@@ -88,7 +88,7 @@ body {
 
   background-size: 400%;
   //filter: blur(50px);
-  animation: animateBgColor 20s linear infinite;
+  animation: animateBgColor 50s linear infinite;
 }
 
 .card-auto-shadow::after {
@@ -102,8 +102,8 @@ body {
   // background-color: #2196f3;
   background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
   background-size: 400%;
-  filter: blur(30px);
-  animation: animateBgColor 20s linear infinite;
+  filter: blur(50px);
+  animation: animateBgColor 50s linear infinite;
 }
 
 @keyframes animateBgColor {

@@ -31,8 +31,8 @@ export class GymReservationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.reserved = this.gymReservation.status !== 'free';
-    this.unavailable = this.gymReservation.date <= moment().unix().toString();
-    console.log(this.unavailable)
+    this.unavailable =
+      moment.unix(+this.gymReservation.date).hour(+this.gymReservation.timeFrom).minute(0).seconds(0).unix() <= moment().unix();
     this.subs$.push(this.authService.user$.subscribe(user => this.user = user));
   }
 
