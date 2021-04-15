@@ -60,7 +60,7 @@ export class WmReservationPageComponent implements OnInit, OnDestroy {
 
   reserve(): void {
     if (this.wms.length > 0) {
-       this.wms[0].timeUntil = moment().add('hours', 4).unix();
+       this.wms[0].timeUntil = moment().add('hours', 6).unix();
        this.wms[0].adminTimeUntil = moment().add('minutes', 20).unix();
        this.wms[0].userId = this.user.uid;
        this.wmService.updateWashingMachine(this.wms[0]).then(res => {

@@ -5,23 +5,23 @@
       <p-card styleClass="rounded">
         <div fxLayout="row" fxLayoutAlign="center center" class="w-100" fxLayout.lt-md="column">
           <div fxLayout="column" fxLayoutAlign="center center" class="light-text-green-shadow ml-md-5 mt-3 mt-md-0">
-            <span>Máte zarezervovanu práčku číslo {{userWM.uid}}.</span>
+            <span>Máte zarezervovanú práčku číslo {{userWM.uid}}.</span>
             <div *ngIf="userWM.adminTimeUntil !== userWM.timeUntil" fxLayout="column" fxLayoutAlign="center center">
             <span>
-              Prosim vyzdvihnite kluce od pracovne do {{getTimeFromUnix(userWM.adminTimeUntil)}}
+              Prosím vyzdvihnite kľúče od práčovne do {{getTimeFromUnix(userWM.adminTimeUntil)}}
             </span>
 
               <span>
-              Zostava vam este <countdown [config]="countdownConfig"></countdown>
+              Zostáva Vám ešte <countdown [config]="countdownConfig"></countdown>
             </span>
 
             </div>
             <div *ngIf="userWM.adminTimeUntil === userWM.timeUntil" fxLayout="column" fxLayoutAlign="center center">
             <span>
-              Pracka je rezervovana do {{getTimeFromUnix(userWM.timeUntil)}}
+              Práčka je rezervovaná do {{getTimeFromUnix(userWM.timeUntil)}}
             </span>
               <span>
-              Zostava vam este <countdown [config]="countdownConfig"></countdown>
+              Zostáva Vám ešte <countdown [config]="countdownConfig"></countdown>
             </span>
             </div>
           </div>

@@ -10,6 +10,7 @@ import {WashingMachineService} from '../../../washing-machine/services/washing-m
 import {WashingMachine} from '../../../washing-machine/models/washing-machine';
 import {GymService} from '../../../gym/services/gym.service';
 import {Gym} from '../../../gym/models/gym';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-landing-page',
@@ -22,6 +23,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   user: User;
   userWM: WashingMachine;
   userGym: Gym[] = [];
+  wmTimeToShow;
 
   constructor(private articleService: ArticleService, private router: Router,
               private authService: AuthService,
@@ -37,6 +39,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       }),
       switchMap((userWM) => {
         this.userWM = userWM[0];
+        this.wmTimeToShow = moment.unix(this.userWM.adminTimeUntil).format('HH:mm:ss');
         return this.gymService.getUserReservations(this.user);
       })
     ).subscribe(userGym => this.userGym = userGym));
