@@ -6,7 +6,7 @@
         <th>User ID</th>
         <th style="width: 20%">Čas potvrdenia</th>
         <th style="width: 20%;">Čas rezervácie</th>
-        <th>Potvrdiť rezerváciu</th>
+        <th>Akcie rezervácii</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-wm>
@@ -16,8 +16,8 @@
         <td>{{unixToDate(wm.adminTimeUntil)}}</td>
         <td>{{unixToDate(wm.timeUntil)}}</td>
         <td>
-          <p-button *ngIf="wm.adminTimeUntil < wm.timeUntil" label="Potvrdit" (click)="updateReservation(wm, false)"></p-button>
-          <p-button *ngIf="wm.adminTimeUntil == wm.timeUntil" label="Odstranit" (click)="updateReservation(wm, true)" styleClass="p-button-danger"></p-button>
+          <p-button *ngIf="wm.adminTimeUntil < wm.timeUntil" label="Potvrdiť" (click)="updateReservation(wm, false)"></p-button>
+          <p-button *ngIf="wm.adminTimeUntil == wm.timeUntil" label="Odstrániť" (click)="updateReservation(wm, true)" styleClass="p-button-danger"></p-button>
         </td>
       </tr>
     </ng-template>
