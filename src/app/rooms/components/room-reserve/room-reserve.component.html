@@ -8,7 +8,7 @@
           <div *ngFor="let user of roomObj.users">
             <h5>{{user.firstName}} {{user.lastName}}</h5>
           </div>
-          <h5 *ngIf="roomObj.users.length < 1">Na tejto izbe zatiaľ nie je nikto ubytovaný</h5>
+          <h5 *ngIf="roomObj.users?.length < 1">Na tejto izbe zatiaľ nie je nikto ubytovaný</h5>
           <p-button label="Rezervovať" styleClass="button-dark-text-green-shadow input-red-shadow p-button-danger"
                     [disabled]="(user.sex === 'male' ? roomObj?.roomType === 'female' : roomObj?.roomType === 'male') || roomObj?.users.length > 3"
                     (onClick)="reserve()"></p-button>

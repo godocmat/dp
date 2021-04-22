@@ -39,7 +39,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       }),
       switchMap((userWM) => {
         this.userWM = userWM[0];
-        this.wmTimeToShow = moment.unix(this.userWM.adminTimeUntil).format('HH:mm:ss');
+        this.wmTimeToShow = moment.unix(this.userWM?.adminTimeUntil).format('HH:mm:ss');
         return this.gymService.getUserReservations(this.user);
       })
     ).subscribe(userGym => this.userGym = userGym));

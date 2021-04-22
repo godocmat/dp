@@ -71,7 +71,6 @@ export class AuthService {
       console.error(err);
       this.toastrService.error(err);
     }
-
   }
 
   async registerUser(email, password, userData): Promise<void> {

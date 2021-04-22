@@ -42,11 +42,11 @@ export class RoomReserveComponent implements OnInit, OnDestroy {
       switchMap(room => {
         this.room = room;
         console.log(room);
-        if (room.length < 4) {
+        if (room?.length < 4) {
           this.router.navigate(['rooms']).then(r => this.roomService.next(''));
           return of(null);
         }
-        else if (room.length >= 4) {
+        else if (room?.length >= 4) {
           return this.roomService.getRoomById(this.room);
         }
         else {
@@ -65,7 +65,6 @@ export class RoomReserveComponent implements OnInit, OnDestroy {
     this.confirmDialog.confirm({
       message: 'Naozaj chcete rezervovať izbu ' + this.room + ' ?',
       accept: () => {
-        this.roomObj.users.push(this.user);
         this.updateRoomAndUser();
       },
       reject: () => {
@@ -76,6 +75,7 @@ export class RoomReserveComponent implements OnInit, OnDestroy {
 
   updateRoomAndUser(): void {
     this.roomObj.roomType = this.user.sex;
+    this.roomObj.users.push(this.user);
     this.roomService.updateRoomById(this.room, this.roomObj).then(r => {
       this.user.room = this.room;
       this.authService.updateUserById(this.user.uid, this.user).then(res => {
