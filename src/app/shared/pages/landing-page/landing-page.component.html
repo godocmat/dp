@@ -1,4 +1,4 @@
-<main class="container" fxLayout="column" fxLayoutAlign="center center">
+<main class="container" *ngIf="user" fxLayout="column" fxLayoutAlign="center center">
     <div class="mt-5 mb-5" *ngIf="user">
       <div fxLayout="row" fxLayoutAlign="center center">
         <span class="card-auto-shadow card-auto-border">
@@ -32,8 +32,8 @@
       <h5 class="mt-2 light-text-green-shadow">{{article.title}}</h5>
     </div>
   </div>
-
-  <div *ngIf="!user">
-    <h1 class="text-center">Pre využívanie tohto systému je potrebné sa prihlásiť</h1>
-  </div>
 </main>
+
+<div *ngIf="!user">
+  <h1 class="text-center">Pre využívanie tohto systému je potrebné sa prihlásiť</h1>
+</div>
