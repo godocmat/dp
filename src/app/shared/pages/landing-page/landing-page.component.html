@@ -32,8 +32,9 @@
       <h5 class="mt-2 light-text-green-shadow">{{article.title}}</h5>
     </div>
   </div>
+  <div *ngIf="!user">
+    <h1 class="text-center">Pre využívanie tohto systému je potrebné sa prihlásiť</h1>
+  </div>
 </main>
 
-<div *ngIf="!user">
-  <h1 class="text-center">Pre využívanie tohto systému je potrebné sa prihlásiť</h1>
-</div>
+
