@@ -21,6 +21,9 @@ export class RoomComponent implements OnInit, OnDestroy {
       if (room.length <= 1) {
         this.router.navigate(['rooms/block']).then(r => this.roomService.next(''));
       }
+      else if (room.length > 4) {
+        this.router.navigate(['rooms/block']).then(r => this.roomService.next(''));
+      }
     });
   }
 

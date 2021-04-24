@@ -42,11 +42,8 @@ export class WmReservationPageComponent implements OnInit, OnDestroy {
       })
     ).subscribe(wm => {
       wm = wm.filter(r => r.adminTimeUntil >= moment().unix());
-      console.log('daco skorej');
       if (wm.length > 0) {
-        console.log('daco');
         this.userWM = wm[0];
-        console.log(this.userWM);
         this.countdownConfig = {
           leftTime: this.userWM.adminTimeUntil - moment().unix()
         };
@@ -64,7 +61,6 @@ export class WmReservationPageComponent implements OnInit, OnDestroy {
        this.wms[0].adminTimeUntil = moment().add('minutes', 20).unix();
        this.wms[0].userId = this.user.uid;
        this.wmService.updateWashingMachine(this.wms[0]).then(res => {
-         console.log(res);
          this.toastrService.success('Práčka úspešne rezervovaná');
        });
     }

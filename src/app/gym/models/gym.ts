@@ -7,5 +7,5 @@ export class Gym {
   public timeUntil: string;
   public status: string;
   public gymNumber: number;
-  public user: User;
+  public user: string;
 }

@@ -27,7 +27,6 @@ export class GymReservationPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subs$.push(this.gymService.getReservationsForTwoWeeks().subscribe(res => {
       this.gymReservations = res;
-      console.log(this.gymReservations);
     }));
     this.firstSunday = moment().day(0).format('DD MMM YYYY');
     this.firstTuesday = moment().day(2).format('DD MMM YYYY');

@@ -1,0 +1,10 @@
+:host ::ng-deep .p-tabview-panels {
+  background: transparent;
+  padding: 0;
+}
+
+:host ::ng-deep .p-tabview-nav {
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+}

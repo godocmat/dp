@@ -1,0 +1,30 @@
+<div class="container">
+  <p-table [loading]="isLoading" [value]="users" [autoLayout]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Meno</th>
+        <th>Priezvisko</th>
+        <th>Pohlavie</th>
+        <th>Izba</th>
+        <th>Poplatok</th>
+        <th>Odstrániť izbu</th>
+        <th>Zmeniť poplatok</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{user.uid}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.sex}}</td>
+        <td>{{user.room}}</td>
+        <td>{{user.payment}}</td>
+        <td><p-button [disabled]="!user.room" label="Odstrániť izbu" (onClick)="deleteRoom(user)" ></p-button></td>
+        <td><button class="p-button" [ngClass]="!user.payment ? '' : 'p-button-danger'" (click)="setPayment(user)">Zmeniť poplatok</button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

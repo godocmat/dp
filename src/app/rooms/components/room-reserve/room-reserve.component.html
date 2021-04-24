@@ -3,7 +3,7 @@
   <div *ngIf="!isLoading" fxLayout="row" fxLayoutAlign="center center">
     <div class="card-red-shadow border-red rounded">
       <p-card>
-        <div class="p-3 pl-5 pr-5 ml-5 mr-5" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+        <div class="p-3 pl-5 pr-5 ml-0 ml-lg-5 mr-0 mr-lg-5 text-center" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
           <h3>{{this.room}}</h3>
           <div *ngFor="let user of roomObj.users">
             <h5>{{user.firstName}} {{user.lastName}}</h5>

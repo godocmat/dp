@@ -39,6 +39,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
           }
         },
         {
+          label: 'Admin Panel',
+          command: () => {
+            this.router.navigate(['admin']);
+          }
+        },
+        {
+          label: 'Pridať oznam',
+          command: () => {
+            this.router.navigate(['article']);
+          }
+        },
+        {
           label: 'Telocvične',
           command: () => {
             this.router.navigate((['gym']));
@@ -48,6 +60,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
           label: 'Moje Telocvične',
           command: () => {
             this.router.navigate((['gym/my_reservations']));
+          }
+        },
+        {
+          label: 'Práčky',
+          command: () => {
+            this.router.navigate(['washing-machine']);
+          }
+        },
+        {
+          label: 'Izby',
+          command: () => {
+            this.router.navigate(['rooms']);
           }
         },
         {

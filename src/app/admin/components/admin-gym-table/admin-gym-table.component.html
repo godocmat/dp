@@ -1,0 +1,27 @@
+<div class="container">
+  <p-table [loading]="isLoading" [value]="gyms" [autoLayout]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Dátum</th>
+        <th>Čas od</th>
+        <th>Čas do</th>
+        <th>Status</th>
+        <th>Používateľ ID</th>
+        <th>Akcie</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-gym>
+      <tr>
+        <td>{{gym.uid}}</td>
+        <td>{{gym.date * 1000 | date:'EEEE, d MMMM y'}}</td>
+        <td>{{gym.timeFrom}}</td>
+        <td>{{gym.timeUntil}}</td>
+        <td>{{gym.status}}</td>
+        <td>{{gym.user ? gym.user : '-'}}</td>
+        <td *ngIf="gym.status === 'reserved'"><p-button styleClass="p-button-danger" label="Odstrániť rezerváciu" (onClick)="deleteUserReservation(gym)"></p-button></td>
+        <td *ngIf="gym.status === 'free'"><p-button label="Rezervovať" (onClick)="reserve(gym)"></p-button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

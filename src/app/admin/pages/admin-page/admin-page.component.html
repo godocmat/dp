@@ -1,0 +1,23 @@
+<p-tabView>
+  <p-tabPanel header="Práčky - Aktívne rezervácie" [selected]="true">
+    <app-admin-wm-confirmation></app-admin-wm-confirmation>
+  </p-tabPanel>
+
+  <p-tabPanel header="Práčky - Logy" [cache]="true">
+    <ng-template pTemplate="content">
+      <app-admin-wm-logs></app-admin-wm-logs>
+    </ng-template>
+  </p-tabPanel>
+
+  <p-tabPanel header="Práčky - Prehľad zariadení">
+    <app-admin-wm-status>
+    </app-admin-wm-status>
+  </p-tabPanel>
+  <p-tabPanel header="Telocvične - prehľad telocviční">
+    <app-admin-gym-table>
+    </app-admin-gym-table>
+  </p-tabPanel>
+  <p-tabPanel header="Používatelia - prehľad používateľov">
+    <app-admin-users-table></app-admin-users-table>
+  </p-tabPanel>
+</p-tabView>

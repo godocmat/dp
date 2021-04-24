@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from "rxjs/operators";
+import {map, tap} from 'rxjs/operators';
 import {Room} from "../models/room";
 
 @Injectable({
@@ -22,6 +22,17 @@ export class RoomService {
         return {
           ...r.payload.data() as Room
         };
+      })
+    );
+  }
+
+  getRoomObject(roomId: string): Observable<Room> {
+    return this.af.collection('rooms').doc(roomId).get().pipe(
+      map(room => {
+        return {
+          uid: room.id,
+          ...room.data() as Room
+        } as Room;
       })
     );
   }

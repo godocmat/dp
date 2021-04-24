@@ -1,6 +1,6 @@
 <div class="container mt-5 light-text-green-shadow">
   <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="80px">
-    <div fxLayout="row-wrap" fxLayoutAlign="space-between center" class="w-100" fxLayoutGap="40px">
+    <div fxLayout="row-wrap" fxLayoutAlign="space-between center" fxLayout.lt-md="column" class="w-100" fxLayoutGap="40px">
 
       <div class="p-3 clickable block" (click)="nextPage('10')" fxLayout="row" fxLayoutAlign="center center">
         <h1>{{this.room}}10</h1>
@@ -14,11 +14,7 @@
         <h1>{{this.room}}08</h1>
       </div>
 
-<!--      <div class="p-3 clickable block" (click)="nextPage('11')" fxLayout="row" fxLayoutAlign="center center">-->
-<!--        <h5>Kuchynka</h5>-->
-<!--      </div>-->
-
-      <div class="p-3 clickable block ml-5" (click)="nextPage('06')" fxLayout="row" fxLayoutAlign="center center">
+      <div class="p-3 clickable block ml-0 ml-lg-5" (click)="nextPage('06')" fxLayout="row" fxLayoutAlign="center center">
         <h1>{{this.room}}06</h1>
       </div>
 
@@ -31,7 +27,7 @@
       </div>
 
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100" fxLayoutGap="40px">
+    <div fxLayout="row-wrap" fxLayoutAlign="space-between center" fxLayout.lt-md="column" class="w-100" fxLayoutGap="40px">
 
       <div class="p-3 clickable block" (click)="nextPage('13')" fxLayout="row" fxLayoutAlign="center center">
         <h1>{{this.room}}13</h1>
@@ -49,7 +45,7 @@
 <!--        <h5>Výťah</h5>-->
 <!--      </div>-->
 
-      <div class="p-3 clickable block ml-5" (click)="nextPage('01')" fxLayout="row" fxLayoutAlign="center center">
+      <div class="p-3 clickable block ml-0 ml-lg-5" (click)="nextPage('01')" fxLayout="row" fxLayoutAlign="center center">
         <h1>{{this.room}}01</h1>
       </div>
 

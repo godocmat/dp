@@ -21,6 +21,9 @@ export class FloorComponent implements OnInit, OnDestroy {
       if (room.length === 0) {
         this.router.navigate(['rooms/block']).then(r => this.roomService.next(''));
       }
+      else if (room.length > 2 ) {
+        this.router.navigate(['rooms/block']).then(r => this.roomService.next(''));
+      }
     });
   }
 

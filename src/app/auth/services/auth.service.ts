@@ -111,7 +111,6 @@ export class AuthService {
 
   getUserById(userId: string): Observable<User> {
     if (userId.length > 0) {
-      console.log(userId);
       return this.afs.collection('users').doc(userId).snapshotChanges().pipe(
         map((r) => r.payload.data() as User),
         tap(r => console.log(r))

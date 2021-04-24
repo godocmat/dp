@@ -41,19 +41,21 @@ export class RoomReserveComponent implements OnInit, OnDestroy {
       }),
       switchMap(room => {
         this.room = room;
-        console.log(room);
         if (room?.length < 4) {
           this.router.navigate(['rooms']).then(r => this.roomService.next(''));
           return of(null);
         }
-        else if (room?.length >= 4) {
+        else if (room?.length === 4) {
           return this.roomService.getRoomById(this.room);
+        }
+        else if (room?.length > 4) {
+          this.router.navigate(['rooms']).then(r => this.roomService.next(''));
+          return of(null);
         }
         else {
           return of(null);
 
       }})).subscribe((roomObject: Room) => {
-      console.log(roomObject);
       if (roomObject) {
         this.roomObj = roomObject;
       }

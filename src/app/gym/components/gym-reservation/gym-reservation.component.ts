@@ -43,7 +43,7 @@ export class GymReservationComponent implements OnInit, OnDestroy {
       rejectLabel: 'Nie',
       accept: () => {
         this.gymReservation.status = 'reserved';
-        this.gymReservation.user = this.user;
+        this.gymReservation.user = this.user.uid;
         this.gymService.updateReservation(this.gymReservation).then(res => {
           this.toastrService.success('Telocvičňa úspešne rezervovaná');
           this.reserved = true;

@@ -29,7 +29,6 @@ export class MyGymReservationsComponent implements OnInit, OnDestroy {
         return this.gymService.getUserReservations(user);
       })
     ).subscribe((res) => {
-      console.log(res)
       this.reservations = res;
     }));
   }

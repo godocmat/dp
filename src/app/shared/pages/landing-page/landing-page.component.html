@@ -6,7 +6,7 @@
             <div class="light-text-green-shadow" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
               <h3 class="mt-3">{{user?.firstName}} {{user?.lastName}}</h3>
 
-              <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
                 <span class="mr-5 ml-5">Izba: {{user?.room ? user?.room : '-'}}</span>
                 <span class="mr-5 ml-5" fxLayout="row" fxLayoutAlign="center center">Poplatok do OZ: <i [ngClass]="user?.payment ? 'pi-check' : 'pi-times'" class="ml-1 pi"></i> </span>
                 <span class="ml-5 mr-5" fxLayout="row" fxLayoutAlign="center center">Práčka: <span class="ml-1" *ngIf="userWM"> č. {{userWM.uid}} do {{wmTimeToShow}}</span><i *ngIf="!userWM" class="ml-1 pi pi-times"></i> </span>
@@ -25,7 +25,7 @@
     </div>
 
   <h3 class="text-center mt-5 light-text-green-shadow">Posledné oznamy:</h3>
-  <div class="mt-5" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="40px">
+  <div class="mt-5" fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-md="column" fxLayoutGap="40px">
     <div *ngFor="let article of articles | slice:0:3" fxLayout="column" fxLayoutAlign="center center"
          class="border clickable card-white-shadow" (click)="showArticle(article.uid)">
       <img src="assets/srj9.png">

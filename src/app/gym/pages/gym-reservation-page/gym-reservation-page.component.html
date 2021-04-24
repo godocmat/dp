@@ -11,13 +11,13 @@
 
           </p-accordionTab>
           <p-accordionTab [header]="'Utorok, ' + firstTuesday" [selected]="true">
-            <div class="w-100" fxLayout="row" fxLayoutAlign="center center">
+            <div class="w-100" fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-sm="column">
               <app-gym-reservation class="w-100" *ngFor="let reservation of gymReservations | slice:4:8" [gymReservation]="reservation">
               </app-gym-reservation>
             </div>
           </p-accordionTab>
           <p-accordionTab [header]="'Štvrtok, ' + firstThursday" [selected]="true">
-            <div class="w-100" fxLayout="row" fxLayoutAlign="center center">
+            <div class="w-100" fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-sm="column">
               <app-gym-reservation class="w-100" *ngFor="let reservation of gymReservations | slice:8:12" [gymReservation]="reservation">
               </app-gym-reservation>
             </div>
@@ -30,19 +30,19 @@
       <p-accordionTab header="Nasledujúci týždeň">
         <p-accordion [multiple]="true">
           <p-accordionTab [header]="'Nedeľa, ' + secondSunday" [selected]="true">
-            <div class="w-100" fxLayout="row" fxLayoutAlign="center center">
+            <div class="w-100" fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-sm="column">
               <app-gym-reservation class="w-100" *ngFor="let reservation of gymReservations | slice:12:16" [gymReservation]="reservation">
               </app-gym-reservation>
             </div>
           </p-accordionTab>
           <p-accordionTab [header]="'Utorok, ' + secondTuesday" [selected]="true">
-            <div class="w-100" fxLayout="row" fxLayoutAlign="center center">
+            <div class="w-100" fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-sm="column">
               <app-gym-reservation class="w-100" *ngFor="let reservation of gymReservations | slice:16:20" [gymReservation]="reservation">
               </app-gym-reservation>
             </div>
           </p-accordionTab>
           <p-accordionTab [header]="'Štvrtok, ' + secondThursday" [selected]="true">
-            <div class="w-100" fxLayout="row" fxLayoutAlign="center center">
+            <div class="w-100" fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-sm="column">
               <app-gym-reservation class="w-100" *ngFor="let reservation of gymReservations | slice:20:24" [gymReservation]="reservation">
               </app-gym-reservation>
             </div>
