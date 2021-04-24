@@ -24,8 +24,8 @@
 
     </div>
 
-  <h3 class="text-center mt-5 light-text-green-shadow">Posledné oznamy:</h3>
-  <div class="mt-5" fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-md="column" fxLayoutGap="40px">
+  <h3 *ngIf="user" class="text-center mt-5 light-text-green-shadow">Posledné oznamy:</h3>
+  <div *ngIf="user" class="mt-5" fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-md="column" fxLayoutGap="40px">
     <div *ngFor="let article of articles | slice:0:3" fxLayout="column" fxLayoutAlign="center center"
          class="border clickable card-white-shadow" (click)="showArticle(article.uid)">
       <img src="assets/srj9.png">
