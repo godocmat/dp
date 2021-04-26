@@ -35,7 +35,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     this.subs$.push(this.authService.user$.pipe(
       switchMap((user) => {
         this.user = user;
-        return this.wmService.getWashingMachineByUserId(user.uid);
+        return this.wmService.getWashingMachineByUserId(user?.uid);
       }),
       switchMap((userWM) => {
         this.userWM = userWM[0];
