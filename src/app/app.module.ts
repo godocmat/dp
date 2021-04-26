@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {DialogService} from 'primeng/dynamicdialog';
 import player from 'lottie-web';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 // tslint:disable-next-line:typedef
 export function playerFactory() {
@@ -35,7 +36,13 @@ export function playerFactory() {
     SharedModule,
     CountdownModule,
     NgbModule,
-    LottieModule.forRoot({player: playerFactory})
+    LottieModule.forRoot({player: playerFactory}),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [DialogService],
   bootstrap: [AppComponent]
